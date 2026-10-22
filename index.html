@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Redirecting…</title>
+<meta name="robots" content="noindex">
+<script>
+// data.sandiegodata.org has no content of its own; every path is sent to its new home.
+// GitHub Pages serves this file as both index.html and 404.html.
+(function () {
+    var p = location.pathname, rest = location.search + location.hash;
+    var base = "https://www.sandiegodata.org";
+    var rules = [
+        [/^\/?$/, "/dataset/"],
+        [/^\/about/, "/dataset/about/"],
+        [/^\/(posts|datasets)/, "/dataset/"],
+        [/^\/homelessness/, "/collections/homelessness/"],
+        [/^\/california-department-of-education/, "/collections/california-department-of-education/"]
+    ];
+    for (var i = 0; i < rules.length; i++) {
+        if (rules[i][0].test(p)) { location.replace(base + rules[i][1]); return; }
+    }
+    p = p.replace(/^\/wp-content\/uploads\/sites\//, "/uploads/");
+    location.replace(base + p + rest);
+})();
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=https://www.sandiegodata.org/dataset/"></noscript>
+</head>
+<body><p>This site has moved to <a href="https://www.sandiegodata.org/dataset/">https://www.sandiegodata.org/dataset/</a>.</p></body>
+</html>
